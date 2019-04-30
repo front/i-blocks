@@ -31,7 +31,7 @@ const TEMPLATE = [
 const BLOCK_ATTRIBUTES = {
   backgroundImage: {
     type: 'string',
-    default: 'https://1.cms.s81c.com/sites/default/files/2018-09-13/leadspace_nogrid.jpg',
+    default: '//1.cms.s81c.com/sites/default/files/2018-09-13/leadspace_nogrid.jpg',
   },
   backgroundImageData: {
     type: 'object',
@@ -85,7 +85,8 @@ export const settings = {
                 {/* Title */}
                 <RichText
                   tagName="h1"
-                  id="ibm-pagetitle-h1" className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
+                  id="ibm-pagetitle-h1"
+                  className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
                   value={ title }
                   placeholder="Title"
                   onChange={ value => setAttributes({ title: value }) }
