@@ -2,20 +2,32 @@
  * External dependencies
  */
 import React from 'react';
-import { element, i18n, /*components,*/ editor } from 'wp';
-
-/**
- * Internal dependencies
- */
-// import './editor.scss';
-
+import { element, i18n, editor } from 'wp';
 
 const { Fragment } = element;
 const { __ } = i18n;
 
 // TODO: Chooose components for the sidebar settings
 // const { PanelBody, FontSizePicker } = components;
-const { InspectorControls, /*PanelColorSettings,*/ RichText } = editor;
+const { InspectorControls, RichText, InnerBlocks } = editor;
+
+// Template options
+const ALLOWED_BLOCKS = [
+  'ibm/button',
+];
+
+const TEMPLATE = [
+  ['ibm/button', {
+    text: 'What’s your potential blockchain ROI?',
+    link: '#1417566',
+    style: 'ibm-download-link',
+  }],
+  ['ibm/button', {
+    text: 'Create now with IBM Blockchain Platform',
+    link: 'https://www.ibm.com/blockchain/platform',
+    style: 'ibm-forward-link',
+  }],
+];
 
 // TODO: Add here the editable block attributes
 const BLOCK_ATTRIBUTES = {
@@ -29,13 +41,13 @@ const BLOCK_ATTRIBUTES = {
   },
   title: {
     type: 'array',
-    source: 'children',
-    selector: 'h1',
-    default: 'IBM Blockchain.<br/>Now delivering value around the world.',
+    source: 'html',
+    selector: 'span',
+    default: 'IBM Blockchain.<br>Now delivering value around the world.',
   },
   teaser: {
     type: 'array',
-    source: 'children',
+    source: 'html',
     selector: 'p',
     default: 'From frictionless supply chains to food we can really trust, learn how industries are revolutionizing business with IBM Blockchain. Let’s put smart to work.™',
   },
@@ -68,26 +80,38 @@ export const settings = {
           <div id="ibm-leadspace-body" className="ibm-padding-top-2 ibm-padding-bottom-2">
             <div className="ibm-fluid ibm-padding-bottom-0">
               <div className="ibm-col-medium-12-6 ibm-col-12-6 ">
+                {/* Title */}
                 <RichText
                   tagName="h1"
-                  className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
-                  id="ibm-pagetitle-h1"
+                  id="ibm-pagetitle-h1" className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
                   value={ title }
                   placeholder="Title"
-                  wrapper="span"
                   onChange={ value => setAttributes({ title: value }) }
                   inlineToolbar
                 />
 
+
+                {/* Teaser */}
                 <RichText
                   tagName="p"
-                  className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
                   value={ teaser }
+                  className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
                   placeholder="Teaser"
-                  wrapper="span"
                   onChange={ value => setAttributes({ teaser: value }) }
                   inlineToolbar
                 />
+
+                {/* Buttons (TODO: button-list block)*/}
+                <div className="ibm-padding-top-1 ibm-padding-bottom-1">
+                  <p className="ibm-button-link ibm-btn-row ibm-ind-link">
+                    <InnerBlocks
+                      template={ TEMPLATE }
+                      allowedBlocks={ ALLOWED_BLOCKS }
+                      templateInsertUpdatesSelection={ false }
+                      templateLock="insert"
+                    />
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -114,15 +138,23 @@ export const settings = {
         <div id="ibm-leadspace-body" className="ibm-padding-top-2 ibm-padding-bottom-2">
           <div className="ibm-fluid ibm-padding-bottom-0">
             <div className="ibm-col-medium-12-6 ibm-col-12-6 ">
-              <RichText.Content
-                tagName="h1"
-                className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
-                id="ibm-pagetitle-h1"
-                value={ title } />
-              <RichText.Content
-                tagName="p"
-                className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
-                value={ teaser } />
+              <h1 id="ibm-pagetitle-h1" className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1">
+                <RichText.Content
+                  tagName="span"
+                  value={ title } />
+              </h1>
+
+              <p className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1">
+                <RichText.Content
+                  tagName="span"
+                  value={ teaser } />
+              </p>
+
+              <div className="ibm-padding-top-1 ibm-padding-bottom-1">
+                <p className="ibm-button-link ibm-btn-row ibm-ind-link">
+                  <InnerBlocks.Content />
+                </p>
+              </div>
             </div>
           </div>
         </div>

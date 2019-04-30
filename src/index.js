@@ -6,9 +6,11 @@ const { __ } = i18n;
 
 // TODO: Import each block herer
 import * as hero from './hero';
+import * as button from './button';
 
 const blockList = [
   hero,
+  button,
 ];
 
 // Category name and slug
