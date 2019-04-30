@@ -7,9 +7,7 @@ import { element, i18n, editor } from 'wp';
 const { Fragment } = element;
 const { __ } = i18n;
 
-// TODO: Chooose components for the sidebar settings
-// const { PanelBody, FontSizePicker } = components;
-const { InspectorControls, RichText, InnerBlocks } = editor;
+const { RichText, InnerBlocks } = editor;
 
 // Template options
 const ALLOWED_BLOCKS = [
@@ -64,6 +62,10 @@ export const settings = {
 
   attributes: BLOCK_ATTRIBUTES,
 
+  supports: {
+    className: false,
+  },
+
   edit ({ attributes, setAttributes }) {
     const { backgroundImage, backgroundImageData, title, teaser } = attributes;
     const containerStyle = {
@@ -87,6 +89,7 @@ export const settings = {
                   value={ title }
                   placeholder="Title"
                   onChange={ value => setAttributes({ title: value }) }
+                  formattingControls={ ['bold', 'italic', 'strikethrough'] }
                   inlineToolbar
                 />
 
@@ -98,6 +101,7 @@ export const settings = {
                   className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
                   placeholder="Teaser"
                   onChange={ value => setAttributes({ teaser: value }) }
+                  formattingControls={ ['bold', 'italic', 'strikethrough'] }
                   inlineToolbar
                 />
 
@@ -116,10 +120,6 @@ export const settings = {
             </div>
           </div>
         </div>
-
-        <InspectorControls>
-          {/* Block settings (sidebar) */}
-        </InspectorControls>
       </Fragment>
     );
   },

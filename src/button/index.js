@@ -46,6 +46,10 @@ export const settings = {
 
   attributes: BLOCK_ATTRIBUTES,
 
+  supports: {
+    className: false,
+  },
+
   edit ({ attributes, setAttributes, isSelected }) {
     const { text, link, style } = attributes;
 
