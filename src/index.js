@@ -7,10 +7,12 @@ const { __ } = i18n;
 // TODO: Import each block herer
 import * as hero from './hero';
 import * as button from './button';
+import * as featuredSolution from './featured-solution';
 
 const blockList = [
   hero,
   button,
+  featuredSolution,
 ];
 
 // Category name and slug

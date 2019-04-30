@@ -39,6 +39,9 @@ const BLOCK_ATTRIBUTES = {
     type: 'string',
     default: '//1.cms.s81c.com/sites/default/files/2018-09-13/leadspace_nogrid.jpg',
   },
+  backgroundImageId: {
+    type: 'number',
+  },
   backgroundImageData: {
     type: 'object',
     default: {},
@@ -74,7 +77,7 @@ export const settings = {
 
   edit ({ attributes, setAttributes }) {
     const {
-      backgroundImage, backgroundImageData, title, teaser,
+      backgroundImage, backgroundImageId, backgroundImageData, title, teaser,
     } = attributes;
 
     const containerStyle = {
@@ -143,6 +146,7 @@ export const settings = {
             <MediaUpload
               onSelect={ onSelectImage }
               allowedTypes={ ['image'] }
+              value={ backgroundImageId }
               render={ ({ open }) => (
                 <IconButton
                   className="components-toolbar__control"
