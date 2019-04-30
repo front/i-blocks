@@ -2,12 +2,18 @@
  * External dependencies
  */
 import React from 'react';
-import { element, i18n, editor } from 'wp';
+import { element, i18n, components, editor } from 'wp';
+
+/**
+ * Internal dependencies
+ */
+import { getMediaAttrs } from '../helpers';
 
 const { Fragment } = element;
 const { __ } = i18n;
 
-const { RichText, InnerBlocks } = editor;
+const { IconButton, Toolbar } = components;
+const { BlockControls, InnerBlocks, MediaUpload, RichText } = editor;
 
 // Template options
 const ALLOWED_BLOCKS = [
@@ -54,7 +60,7 @@ const BLOCK_ATTRIBUTES = {
 export const name = 'hero';
 
 export const settings = {
-  title: __('Hero Banner'),
+  title: __('Hero'),
 
   description: __('Hero container with a background image'),
 
@@ -67,12 +73,23 @@ export const settings = {
   },
 
   edit ({ attributes, setAttributes }) {
-    const { backgroundImage, backgroundImageData, title, teaser } = attributes;
+    const {
+      backgroundImage, backgroundImageData, title, teaser,
+    } = attributes;
+
     const containerStyle = {
       backgroundImage: `url('${backgroundImage}')`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+    };
+
+    const onSelectImage = image => {
+      setAttributes({
+        backgroundImage: image.url,
+        backgroundImageId: image.id,
+        backgroundImageData: getMediaAttrs(image),
+      });
     };
 
     return (
@@ -93,7 +110,6 @@ export const settings = {
                   formattingControls={ ['bold', 'italic', 'strikethrough'] }
                   inlineToolbar
                 />
-
 
                 {/* Teaser */}
                 <RichText
@@ -121,6 +137,23 @@ export const settings = {
             </div>
           </div>
         </div>
+
+        <BlockControls>
+          <Toolbar>
+            <MediaUpload
+              onSelect={ onSelectImage }
+              allowedTypes={ ['image'] }
+              render={ ({ open }) => (
+                <IconButton
+                  className="components-toolbar__control"
+                  label={ __('Edit background image') }
+                  icon="edit"
+                  onClick={ open }
+                />
+              ) }
+            />
+          </Toolbar>
+        </BlockControls>
       </Fragment>
     );
   },
