@@ -17,9 +17,9 @@ const { Dashicon, IconButton, PanelBody, SelectControl } = components;
 const { InspectorControls, RichText, URLInput } = editor;
 
 const STYLES = [
-  { value: '', label: 'Default' },
-  { value: 'ibm-download-link', label: 'Download' },
-  { value: 'ibm-forward-link', label: 'Forward arrow' },
+  // { value: '', label: 'Default' },
+  { value: 'ibm-download-link', label: __('Download') },
+  { value: 'ibm-forward-link', label: __('Forward arrow') },
 ];
 
 // TODO: Add here the editable block attributes

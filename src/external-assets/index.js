@@ -43,6 +43,14 @@ export const settings = {
         <link rel="stylesheet" href="//1.www.s81c.com/common/v18/css/tables.css" media="all" />
         <link rel="stylesheet" href="//1.www.s81c.com/common/v18/css/grid-fluid.css" media="all" />
         <link rel="stylesheet" href="//1.cms.s81c.com/sites/default/files/css/css_EneiLCH2C7OvkDxQNoz70doseF_bb-0-hJL5DCnDePI.css?pqpdq2" media="all" />
+
+        <script src="//1.cms.s81c.com/sites/default/files/js/js_2MaHvduQMY5hz7cqy9JvqV2FJV7tqpaVAHahYFcV8Vo.js"></script>
+        <script src="//1.www.s81c.com/common/stats/ida_stats.js" async=""></script>
+        <script src="//1.www.s81c.com/common/v18/js/www.js" defer=""></script>
+        <script src="//1.www.s81c.com/common/v18/js/dyntabs.js" defer=""></script>
+        <script src="//1.www.s81c.com/common/v18/js/tables.js" defer=""></script>
+        <script src="//1.www.s81c.com/common/js/tactic.js" defer=""></script>
+        <script src="//1.www.s81c.com/common/js/tacticbindlinks.js" defer=""></script>
       </Fragment>
     );
   },

@@ -13,9 +13,23 @@
   .edit-post-sidebar {
     ol > li,
     ul > li {
+      padding-left: 0px;
+
       &::before {
         content: '';
       }
+    }
+
+    ol li+li,
+    ul li+li {
+     padding-top: 0px;
+    }
+  }
+
+  .edit-post-sidebar,
+  .edit-post-header {
+    * {
+      font-size: small;
     }
   }
 }
