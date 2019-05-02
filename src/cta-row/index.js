@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React from 'react';
-import { element, i18n, components, editor } from 'wp';
+import { element, i18n, editor } from 'wp';
 
 /**
  * Internal dependencies
@@ -12,8 +12,7 @@ import './editor.scss';
 const { Fragment } = element;
 const { __ } = i18n;
 
-const { PanelBody, TextControl } = components;
-const { InnerBlocks, InspectorControls, RichText } = editor;
+const { InnerBlocks, RichText } = editor;
 
 // Template options
 const ALLOWED_BLOCKS = [
@@ -36,10 +35,6 @@ const BLOCK_ATTRIBUTES = {
     selector: 'h2',
     default: 'New: IBM Blockchain Platform Free 2.0 Beta',
   },
-  blockId: {
-    type: 'string',
-    default: '1596131',
-  },
 };
 
 export const name = 'cta-row';
@@ -54,16 +49,17 @@ export const settings = {
   attributes: BLOCK_ATTRIBUTES,
 
   supports: {
+    anchor: true,
     className: false,
   },
 
   edit ({ attributes, setAttributes }) {
-    const { title, blockId } = attributes;
+    const { title } = attributes;
 
     return (
       <Fragment>
         {/* Block markup (main editor) */}
-        <div className="ibm-band ibm-background-systems-blue-60 ibm-textcolor-default ibm-padding-top-0 ibm-padding-bottom-1" id={ blockId } >
+        <div className="ibm-band ibm-background-systems-blue-60 ibm-textcolor-default ibm-padding-top-0 ibm-padding-bottom-1">
           <div className="ibm-fluid ibm-padding-bottom-0">
             <div>
               <div className="ibm-col-12-3 ibm-col-medium-12-12 ">
@@ -97,26 +93,15 @@ export const settings = {
             </div>
           </div>
         </div>
-
-        <InspectorControls>
-          <PanelBody title={ __('Extra') } initialOpen={ false }>
-            <TextControl
-              label={ __('Block id') }
-              value={ blockId }
-              onChange={ value => setAttributes({ blockId: value }) }
-              help={ __('Optional. It can be usefull for anchor links') }
-            />
-          </PanelBody>
-        </InspectorControls>
       </Fragment>
     );
   },
 
   save ({ attributes }) {
-    const { title, blockId } = attributes;
+    const { title } = attributes;
 
     return (
-      <div className="ibm-band ibm-background-systems-blue-60 ibm-textcolor-default ibm-padding-top-0 ibm-padding-bottom-1" id={ blockId } >
+      <div className="ibm-band ibm-background-systems-blue-60 ibm-textcolor-default ibm-padding-top-0 ibm-padding-bottom-1" >
         <div className="ibm-fluid ibm-padding-bottom-0">
           <div>
             <div className="ibm-col-12-3 ibm-col-medium-12-12 ">

@@ -19,7 +19,6 @@ const {
   Dashicon,
   IconButton,
   PanelBody,
-  TextControl,
   Toolbar,
 } = components;
 
@@ -105,10 +104,6 @@ const BLOCK_ATTRIBUTES = {
       'data-customplaceholder': 'true',
     },
   },
-  blockId: {
-    type: 'string',
-    default: '1001996',
-  },
 };
 
 const DEFAULT_THUMB = '//placeimg.com/470/265/nature/grayscale';
@@ -125,13 +120,14 @@ export const settings = {
   attributes: BLOCK_ATTRIBUTES,
 
   supports: {
+    anchor: true,
     className: false,
   },
 
   edit ({ attributes, setAttributes }) {
     const {
       backgroundImage, backgroundImageId, backgroundImageData, title, teaser,
-      video, videoCaption, videoThumb, videoThumbId, videoData, blockId,
+      video, videoCaption, videoThumb, videoThumbId, videoData,
     } = attributes;
 
     const containerStyle = {
@@ -163,7 +159,7 @@ export const settings = {
     return (
       <Fragment>
         {/* Block markup (main editor) */}
-        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id={ blockId } { ...backgroundImageData }>
+        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" { ...backgroundImageData }>
           <div className="ibm-fluid">
             <div className="ibm-col-12-6 ">
               {/* Title */}
@@ -266,15 +262,6 @@ export const settings = {
               />
             </BaseControl>
           </PanelBody>
-
-          <PanelBody title={ __('Extra') } initialOpen={ false }>
-            <TextControl
-              label={ __('Block id') }
-              value={ blockId }
-              onChange={ value => setAttributes({ blockId: value }) }
-              help={ __('Optional. It can be usefull for anchor links') }
-            />
-          </PanelBody>
         </InspectorControls>
 
         <BlockControls>
@@ -315,7 +302,7 @@ export const settings = {
   save ({ attributes }) {
     const {
       backgroundImage, backgroundImageData, title, teaser, video, videoCaption,
-      videoThumb, videoData, blockId,
+      videoThumb, videoData,
     } = attributes;
     const containerStyle = {
       backgroundImage: `url('${backgroundImage}')`,
@@ -329,7 +316,7 @@ export const settings = {
 
     return (
       <Fragment>
-        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id={ blockId } { ...backgroundImageData }>
+        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" { ...backgroundImageData }>
           <div className="ibm-fluid">
             <div className="ibm-col-12-6 ">
               {/* Title */}
