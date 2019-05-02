@@ -1,0 +1,21 @@
+// a few editor adjustments
+#editor,
+.gutenberg__editor {
+  button, input, select, textarea {
+    font-size: 'initial';
+  }
+
+  .edit-post-layout__content {
+    background: white;
+    top: 56px;
+  }
+
+  .edit-post-sidebar {
+    ol > li,
+    ul > li {
+      &::before {
+        content: '';
+      }
+    }
+  }
+}

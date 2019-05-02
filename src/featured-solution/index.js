@@ -31,12 +31,12 @@ const ALLOWED_BLOCKS = [
 const TEMPLATE = [
   ['ibm/button', {
     text: 'See latest news',
-    link: 'https://www.ibm.com/blockchain/news-and-events',
+    link: '//www.ibm.com/blockchain/news-and-events',
     style: 'ibm-forward-link',
   }],
   ['ibm/button', {
     text: 'What is blockchain?',
-    link: 'https://www.ibm.com/blockchain/what-is-blockchain',
+    link: '//www.ibm.com/blockchain/what-is-blockchain',
     style: 'ibm-forward-link',
   }],
 ];
@@ -69,7 +69,7 @@ const BLOCK_ATTRIBUTES = {
   },
   video: {
     type: 'string',
-    default: 'https://www.youtube-nocookie.com/embed/xZrFVw3OSps?autoplay=1&amp;hl=en-us&amp;iv_load_policy=3&amp;listType=playlist&amp;origin=https%3A%2F%2Fwww.ibm.com&amp;rel=0&amp;showinfo=1&amp;controls=1&amp;modestbranding=0&amp;theme=dark&amp;enablejsapi=1&amp;widgetid=1',
+    default: '//www.youtube-nocookie.com/embed/xZrFVw3OSps?autoplay=1&amp;hl=en-us&amp;iv_load_policy=3&amp;listType=playlist&amp;origin=https%3A%2F%2Fwww.ibm.com&amp;rel=0&amp;showinfo=1&amp;controls=1&amp;modestbranding=0&amp;theme=dark&amp;enablejsapi=1&amp;widgetid=1',
   },
   videoCaption: {
     type: 'string',
@@ -102,7 +102,7 @@ const BLOCK_ATTRIBUTES = {
   },
 };
 
-const DEFAULT_THUMB = 'https://placeimg.com/470/265/nature/grayscale';
+const DEFAULT_THUMB = '//placeimg.com/470/265/nature/grayscale';
 
 export const name = 'featured-solution';
 

@@ -1,5 +1,7 @@
 
 import { blocks, data, i18n } from 'wp';
+import './editor.scss';
+
 const { registerBlockType } = blocks;
 const { dispatch, select } = data;
 const { __ } = i18n;

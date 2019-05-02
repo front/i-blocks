@@ -29,7 +29,7 @@ const TEMPLATE = [
   }],
   ['ibm/button', {
     text: 'Create now with IBM Blockchain Platform',
-    link: 'https://www.ibm.com/blockchain/platform',
+    link: '//www.ibm.com/blockchain/platform',
     style: 'ibm-forward-link',
   }],
 ];

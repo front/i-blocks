@@ -9,6 +9,9 @@ const { __ } = i18n;
 
 export const name = 'external-assets';
 
+// Adding body class (g-editor)
+document.body.classList.add('ibm-type');
+
 export const settings = {
   title: __('Styles And Scripts'),
   description: __('Import the css styles and js scripts for IBM'),
