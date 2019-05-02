@@ -1,0 +1,15 @@
+
+.wp-block[data-type="ibm/button"] {
+  .dashicons-admin-links,
+  .block-library-button__inline-link {
+    position: static;
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+
+  .components-icon-button {
+    display: flex;
+    margin: 0px;
+  }
+}
+

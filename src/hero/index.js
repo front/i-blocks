@@ -8,6 +8,7 @@ import { element, i18n, components, editor } from 'wp';
  * Internal dependencies
  */
 import { getMediaAttrs } from '../helpers';
+import './editor.scss';
 
 const { Fragment } = element;
 const { __ } = i18n;

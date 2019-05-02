@@ -4,6 +4,11 @@
 import React from 'react';
 import { element, i18n, components, editor } from 'wp';
 
+/**
+ * Internal dependencies
+ */
+import './editor.scss';
+
 const { Fragment } = element;
 const { __ } = i18n;
 

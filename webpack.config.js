@@ -25,7 +25,7 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.s?css$/,
+        test: /style\.s?css$/,
         exclude: /node_modules/,
         use: blockCSS.extract(['css-loader', 'sass-loader']),
       },
