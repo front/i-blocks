@@ -69,10 +69,10 @@ const BLOCK_ATTRIBUTES = {
     default: 'Turning talk into tangible business outcomes',
   },
   teaser: {
-    type: 'array',
+    type: 'string',
     source: 'html',
     multiline: 'p',
-    selector: 'div',
+    selector: 'div.ibm-textcolor-white-core.ibm-padding-top-1.ibm-padding-bottom-1',
     default: '<p>Each day, forward-thinking companies are transforming blockchain’s promise into bottom-line business results. And they’re doing it with IBM Blockchain.</p><p>But building and deploying enterprise blockchain solutions continues to be larger than any one business can tackle on its own. Discover how IBM Blockchain can help you bring together allies across departments and disciplines, industries and organizations, and countries and cultures.</p>',
   },
   video: {

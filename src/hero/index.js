@@ -61,16 +61,16 @@ const BLOCK_ATTRIBUTES = {
     default: {},
   },
   title: {
-    type: 'array',
+    type: 'string',
     source: 'html',
-    selector: 'span',
-    default: 'IBM Blockchain.<br>Now delivering value around the world.',
+    selector: 'h1',
+    default: '<span>IBM Blockchain.<br>Now delivering value around the world.</span>',
   },
   teaser: {
-    type: 'array',
+    type: 'string',
     source: 'html',
     selector: 'p',
-    default: 'From frictionless supply chains to food we can really trust, learn how industries are revolutionizing business with IBM Blockchain. Let’s put smart to work.™',
+    default: '<span>From frictionless supply chains to food we can really trust, learn how industries are revolutionizing business with IBM Blockchain. Let’s put smart to work.™</span>',
   },
 };
 
@@ -109,6 +109,22 @@ export const settings = {
       });
     };
 
+    const onChangeTitle = newTitle => {
+      const hasSpan = newTitle.startsWith('<span>');
+
+      setAttributes({
+        title: hasSpan ? newTitle : `<span>${newTitle}</span>`,
+      });
+    };
+
+    const onChangeTeaser = newTeaser => {
+      const hasSpan = newTeaser.startsWith('<span>');
+
+      setAttributes({
+        teaser: hasSpan ? newTeaser : `<span>${newTeaser}</span>`,
+      });
+    };
+
     return (
       <Fragment>
         {/* Block markup (main editor) */}
@@ -123,7 +139,7 @@ export const settings = {
                   className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
                   value={ title }
                   placeholder="Title"
-                  onChange={ value => setAttributes({ title: value }) }
+                  onChange={ onChangeTitle }
                   formattingControls={ ['bold', 'italic', 'strikethrough'] }
                   inlineToolbar
                 />
@@ -134,7 +150,7 @@ export const settings = {
                   value={ teaser }
                   className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
                   placeholder="Teaser"
-                  onChange={ value => setAttributes({ teaser: value }) }
+                  onChange={ onChangeTeaser }
                   formattingControls={ ['bold', 'italic', 'strikethrough'] }
                   inlineToolbar
                 />
@@ -208,17 +224,16 @@ export const settings = {
         <div id="ibm-leadspace-body" className="ibm-padding-top-2 ibm-padding-bottom-2">
           <div className="ibm-fluid ibm-padding-bottom-0">
             <div className="ibm-col-medium-12-6 ibm-col-12-6 ">
-              <h1 id="ibm-pagetitle-h1" className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1">
-                <RichText.Content
-                  tagName="span"
-                  value={ title } />
-              </h1>
+              <RichText.Content
+                tagName="h1"
+                id="ibm-pagetitle-h1"
+                className="ibm-h1 ibm-textcolor-white-core ibm-padding-bottom-0 ibm-padding-top-1"
+                value={ title } />
 
-              <p className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1">
-                <RichText.Content
-                  tagName="span"
-                  value={ teaser } />
-              </p>
+              <RichText.Content
+                tagName="p"
+                className="ibm-h4 ibm-light ibm-textcolor-white-core ibm-padding-top-1 ibm-padding-bottom-1"
+                value={ teaser } />
 
               <div className="ibm-padding-top-1 ibm-padding-bottom-1">
                 <p className="ibm-button-link ibm-btn-row ibm-ind-link">
