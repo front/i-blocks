@@ -8,11 +8,13 @@ const { __ } = i18n;
 import * as hero from './hero';
 import * as button from './button';
 import * as featuredSolution from './featured-solution';
+import * as ctaRow from './cta-row';
 
 const blockList = [
   hero,
   button,
   featuredSolution,
+  ctaRow,
 ];
 
 // Category name and slug

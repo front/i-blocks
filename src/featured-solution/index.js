@@ -12,8 +12,15 @@ import { parseVideo, getVideoThumb, getMediaAttrs } from '../helpers';
 const { Fragment } = element;
 const { __ } = i18n;
 
-const { Dashicon, IconButton, Toolbar } = components;
-const { BlockControls, InnerBlocks, MediaUpload, RichText, URLInput } = editor;
+const { Dashicon, IconButton, PanelBody, TextControl, Toolbar } = components;
+const {
+  BlockControls,
+  InnerBlocks,
+  InspectorControls,
+  MediaUpload,
+  RichText,
+  URLInput,
+} = editor;
 
 // Template options
 const ALLOWED_BLOCKS = [
@@ -88,6 +95,10 @@ const BLOCK_ATTRIBUTES = {
       'data-customplaceholder': 'true',
     },
   },
+  blockId: {
+    type: 'string',
+    default: '1001996',
+  },
 };
 
 const DEFAULT_THUMB = 'https://placeimg.com/470/265/nature/grayscale';
@@ -110,8 +121,9 @@ export const settings = {
   edit ({ attributes, setAttributes }) {
     const {
       backgroundImage, backgroundImageId, backgroundImageData, title, teaser,
-      video, videoCaption, videoThumb, videoThumbId, videoData,
+      video, videoCaption, videoThumb, videoThumbId, videoData, blockId,
     } = attributes;
+
     const containerStyle = {
       backgroundImage: `url('${backgroundImage}')`,
       backgroundRepeat: 'no-repeat',
@@ -141,7 +153,7 @@ export const settings = {
     return (
       <Fragment>
         {/* Block markup (main editor) */}
-        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id="1001996" { ...backgroundImageData }>
+        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id={ blockId } { ...backgroundImageData }>
           <div className="ibm-fluid">
             <div className="ibm-col-12-6 ">
               {/* Title */}
@@ -214,6 +226,16 @@ export const settings = {
           </div>
         </div>
 
+        <InspectorControls>
+          <PanelBody title={ __('Settings') }>
+            <TextControl
+              label={ __('id') }
+              value={ blockId }
+              onChange={ value => setAttributes({ blockId: value }) }
+            />
+          </PanelBody>
+        </InspectorControls>
+
         <BlockControls>
           <Toolbar>
             <MediaUpload
@@ -252,7 +274,7 @@ export const settings = {
   save ({ attributes }) {
     const {
       backgroundImage, backgroundImageData, title, teaser, video, videoCaption,
-      videoThumb, videoData,
+      videoThumb, videoData, blockId,
     } = attributes;
     const containerStyle = {
       backgroundImage: `url('${backgroundImage}')`,
@@ -266,7 +288,7 @@ export const settings = {
 
     return (
       <Fragment>
-        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id="1001996" { ...backgroundImageData }>
+        <div style={ containerStyle } className="ibm-band-background-image ibm-band ibm-background-black-core ibm-textcolor-white-core ibm-padding-top-2 ibm-padding-bottom-0" id={ blockId } { ...backgroundImageData }>
           <div className="ibm-fluid">
             <div className="ibm-col-12-6 ">
               {/* Title */}
@@ -283,7 +305,7 @@ export const settings = {
                 value={ teaser }
               />
 
-              {/* Buttons (TODO: button-list block)*/}
+              {/* Buttons */}
               <div className="ibm-button-link ibm-btn-row ibm-ind-link ibm-padding-top-1 ibm-padding-bottom-1">
                 <p className="ibm-btn-row ibm-ind-link">
                   <InnerBlocks.Content />
@@ -291,6 +313,7 @@ export const settings = {
               </div>
             </div>
 
+            {/* Video */}
             <div className="ibm-col-12-6 ">
               <div className="ibm-padding-top-1 ibm-padding-bottom-1 ibm-video-player-con" { ...videoData }>
                 <div>
@@ -316,7 +339,7 @@ export const settings = {
         <div className="ibm-common-overlay ibm-overlay-alt ibm-video-overlay seamless ibm-overlay-text-white" id="ibm-overlaywidget-1" role="dialog" aria-describedby="ibm-overlaywidget-1-content" aria-label="Overlay content" data-widget="overlay container" data-name style="background-color: rgb(0, 0, 0); z-index: 920;">
           <div className="ibm-overlay-heading-con">
             <p className="ibm-icononly">
-              <a href="javascript:void(0);" className="ibm-close-link" role="button">Close</a>
+              <a href="javascript:void(0);" className="ibm-close-link" role="button">{ __('Close') }</a>
             </p>
           </div>
           <div id="ibm-overlaywidget-1-content" className="content hidexscroll">
