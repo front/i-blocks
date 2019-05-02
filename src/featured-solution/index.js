@@ -13,7 +13,16 @@ import './editor.scss';
 const { Fragment } = element;
 const { __ } = i18n;
 
-const { Dashicon, IconButton, PanelBody, TextControl, Toolbar } = components;
+const {
+  BaseControl,
+  Button,
+  Dashicon,
+  IconButton,
+  PanelBody,
+  TextControl,
+  Toolbar,
+} = components;
+
 const {
   BlockControls,
   InnerBlocks,
@@ -229,10 +238,41 @@ export const settings = {
 
         <InspectorControls>
           <PanelBody title={ __('Settings') }>
+            <BaseControl label={ __('Background Image') }>
+              <MediaUpload
+                onSelect={ onSelectBackgroundImage }
+                allowedTypes={ ['image'] }
+                value={ backgroundImageId }
+                render={ ({ open }) => (
+                  <Button
+                    isPrimary
+                    onClick={ open }
+                  >{ __('Choose image') }</Button>
+                ) }
+              />
+            </BaseControl>
+
+            <BaseControl label={ __('Video Thumbnail') }>
+              <MediaUpload
+                onSelect={ onSelectVideoThumb }
+                allowedTypes={ ['image'] }
+                value={ videoThumbId }
+                render={ ({ open }) => (
+                  <Button
+                    isPrimary
+                    onClick={ open }
+                  >{ __('Choose image') }</Button>
+                ) }
+              />
+            </BaseControl>
+          </PanelBody>
+
+          <PanelBody title={ __('Extra') } initialOpen={ false }>
             <TextControl
-              label={ __('id') }
+              label={ __('Block id') }
               value={ blockId }
               onChange={ value => setAttributes({ blockId: value }) }
+              help={ __('Optional. It can be usefull for anchor links') }
             />
           </PanelBody>
         </InspectorControls>

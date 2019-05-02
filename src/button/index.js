@@ -18,8 +18,8 @@ const { InspectorControls, RichText, URLInput } = editor;
 
 const STYLES = [
   // { value: '', label: 'Default' },
+  { value: 'ibm-forward-link', label: __('Arrow') },
   { value: 'ibm-download-link', label: __('Download') },
-  { value: 'ibm-forward-link', label: __('Forward arrow') },
 ];
 
 // TODO: Add here the editable block attributes

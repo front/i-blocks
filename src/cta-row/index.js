@@ -38,7 +38,7 @@ const BLOCK_ATTRIBUTES = {
   },
   blockId: {
     type: 'string',
-    default: '1001996',
+    default: '1596131',
   },
 };
 
@@ -99,11 +99,12 @@ export const settings = {
         </div>
 
         <InspectorControls>
-          <PanelBody title={ __('Settings') }>
+          <PanelBody title={ __('Extra') } initialOpen={ false }>
             <TextControl
-              label={ __('id') }
+              label={ __('Block id') }
               value={ blockId }
               onChange={ value => setAttributes({ blockId: value }) }
+              help={ __('Optional. It can be usefull for anchor links') }
             />
           </PanelBody>
         </InspectorControls>

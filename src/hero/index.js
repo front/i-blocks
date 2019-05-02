@@ -13,8 +13,21 @@ import './editor.scss';
 const { Fragment } = element;
 const { __ } = i18n;
 
-const { IconButton, Toolbar } = components;
-const { BlockControls, InnerBlocks, MediaUpload, RichText } = editor;
+const {
+  BaseControl,
+  Button,
+  IconButton,
+  PanelBody,
+  Toolbar,
+} = components;
+
+const {
+  BlockControls,
+  InnerBlocks,
+  InspectorControls,
+  MediaUpload,
+  RichText,
+} = editor;
 
 // Template options
 const ALLOWED_BLOCKS = [
@@ -141,6 +154,24 @@ export const settings = {
             </div>
           </div>
         </div>
+
+        <InspectorControls>
+          <PanelBody title={ __('Settings') }>
+            <BaseControl label={ __('Background Image') }>
+              <MediaUpload
+                onSelect={ onSelectImage }
+                allowedTypes={ ['image'] }
+                value={ backgroundImageId }
+                render={ ({ open }) => (
+                  <Button
+                    isPrimary
+                    onClick={ open }
+                  >{ __('Choose image') }</Button>
+                ) }
+              />
+            </BaseControl>
+          </PanelBody>
+        </InspectorControls>
 
         <BlockControls>
           <Toolbar>
