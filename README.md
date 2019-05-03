@@ -1,18 +1,24 @@
-# IBM Blocks
+# I Blocks demo
 > This project was bootstrapped with [Create Cloud Block](https://github.com/front/create-cloud-block).
 
+This is a collection of blocks as seen on /blockchain. We limited the flexibility to a minimum, to provide a super easy to use UI. We built it so that frontend devs with no Drupal experience can play with it – there is no PHP involved.
 
-Below you will find some information on how to run scripts.
+**IMPORTANT**: To showcase that we can choosse if we want to re-use existing styles from the main site or not, we simply created a block called "Styles and scripts". Add that as the first block on the page before adding anything else.
+
+Block list:
+
+- Styles and scripts
+- Hero
+- CTA row
+- Featured Solution
+
+A few npm command go get going:
+
+
+## `npm install`
+- Install things
 
 ## `npm start`
-- Use to compile and run the block in development mode.
-- Live reload is not supported currently.
+- Compile and run. Your blocks are now available in Gutenberg on http://localhost:3000
 
 
-## `npm run build`
-- Use to build production code for your block inside `build` folder.
-
-
-## `npm run deploy`
- - Use to publish the block to NPM
- - It will become available in Gutenberg Cloud in a few minutes
